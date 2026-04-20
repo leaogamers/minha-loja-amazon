@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Ofertas de Banana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Indie+Flower&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --banana-yellow: #f7d61b; /* Amarelo clássico da capa */
+            --paper-white: #fdfdfd;
+            --ink-black: #2b2b2b;
+            --notebook-line: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Gochi Hand', cursive;
+            background-color: var(--banana-yellow);
+            margin: 0;
+            padding: 0;
+            color: var(--ink-black);
+        }
+
+        header {
+            background-color: var(--ink-black);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-bottom: 5px solid #000;
+        }
+
+        header h1 {
+            font-family: 'Indie Flower', cursive;
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Grid de Produtos */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* Estilo Caderno/Diário */
+        .product-card {
+            background: var(--paper-white);
+            border: 3px solid var(--ink-black);
+            border-radius: 2px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            /* Efeito de folha de papel */
+            box-shadow: 8px 8px 0px var(--ink-black);
+            transition: all 0.2s ease;
+        }
+
+        .product-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px var(--ink-black);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: 180px;
+            object-fit: contain;
+            filter: grayscale(20%); /* Para dar um ar mais rústico */
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin: 15px 0;
+            border-bottom: 2px dashed var(--ink-black);
+            padding-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* Botão estilo "Rascunho" */
+        .buy-btn {
+            display: block;
+            background-color: var(--ink-black);
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .buy-btn:hover {
+            background-color: #444;
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.1rem;
+            background: rgba(0,0,0,0.05);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Diário de Ofertas</h1>
+    <p>Memorandos do meu trabalho como Associado Amazon</p>
+</header>
+
+<div class="container">
+    <div class="products-grid" id="vitrine">
+        </div>
+</div>
+
+<footer>
+    <p>"Eu não sou um associado, sou um empresário." - Greg Heffley (provavelmente)</p>
+</footer>
+
+<script>
+    // LISTA DE PRODUTOS
+    const produtos = [
+        {
+            titulo: "Diário de um Banana 1",
+            imagem: "https://m.media-amazon.com/images/I/71fWaI5myqL._SY385_.jpg",
+            preco: "R$47,97",
+            link: "https://amzn.to/42l7hzY"
+        },
+        {
+            titulo: "Diário de um Banana 20 - Festa insana",
+            imagem: "https://m.media-amazon.com/images/I/519VdIpHPaL._SY445_SX342_ML2_.jpg",
+            preco: "R$49,78",
+            link: "https://amzn.to/3Qirkwo"
+        },
+        {
+            titulo: "Box Diário de um banana -10 volumes",
+            imagem: "https://m.media-amazon.com/images/I/61aH2LEi3bL._SY342_.jpg",
+            preco: "R$267,50",
+            link: "https://amzn.to/3Ql9d8Z"
+        }
+    ];
+
+    const vitrine = document.getElementById('vitrine');
+
+    produtos.forEach(prod => {
+        const card = `
+            <div class="product-card">
+                <img src="${prod.imagem}" alt="${prod.titulo}">
+                <h3>${prod.titulo}</h3>
+                <p class="price">${prod.preco}</p>
+                <a href="${prod.link}" target="_blank" class="buy-btn">COMPRAR AGORA</a>
+            </div>
+        `;
+        vitrine.innerHTML += card;
+    });
+</script>
+
+</body>
+</html>
